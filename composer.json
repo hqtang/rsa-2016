@@ -1,0 +1,20 @@
+{
+	"require": {
+		"php": ">=5.3.0",
+		"slim/slim": "2.*",
+		"catfan/medoo": "0.9.6",
+		"phpmailer/phpmailer":	"5.2.*"
+	},
+	"autoload": {
+		"classmap": [
+			"lib/slim/slim/Slim/Slim.php",
+			"lib/catfan/medoo/medoo.php",
+			"lib/phpmailer/phpmailer"
+		]
+	},
+	"config": {
+		"preferred-install": "dist",
+		"vendor-dir": "lib"
+	},
+	"minimum-stability": "stable"
+}
