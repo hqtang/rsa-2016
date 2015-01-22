@@ -95,6 +95,11 @@ class Default_page
 		
 	}
 
+	public function error($page_data)
+	{
+		$this->app->render('error.html', $page_data);
+	}
+
 	public function comment($name, $email, $phone, $message, $email_config)
 	{
 		$comment = array(

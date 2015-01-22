@@ -113,4 +113,17 @@ $app->post('/login', 								function () use ($login, $app){
 
 
 
+/*ERROR PAGE*/
+$app->error(function (\Exception $e) use ($default_page) {
+	
+	$page_data['error'] = new Exception();
+	$page_data['type'] = 500;
+	$default_page->error($page_data);
+});
+
+$app->notFound(function () 			use ($default_page) {
+    $page_data['type'] = 404;
+	$default_page->error($page_data);
+});
+
 $app->run();

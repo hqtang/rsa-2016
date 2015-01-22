@@ -1,8 +1,8 @@
 <?php
 $config = array(
 	'config'	=>	array(
-						'mode'									=>	'development', //production
-						'debug'									=>	true,
+						'mode'									=>	'production', //production/development
+						'debug'									=>	false,
 						'log.enable' 						=>	true,
 						'log.level' 						=>	4,
 						'templates.path'				=>	dirname(__FILE__)."/views/default",
