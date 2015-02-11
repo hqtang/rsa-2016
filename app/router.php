@@ -50,7 +50,7 @@ $app->get('/dashboard', 							function () use ($deshboard){
 
 
 $app->get('/dashboard/new-section', 				function () use ($deshboard){
-	$deshboard->new_section("show", "", "", "", "");
+	$deshboard->new_section("show", "", "", "", "", "");
 });
 
 $app->post('/dashboard/new-section', 				function () use ($deshboard, $app){
@@ -58,7 +58,8 @@ $app->post('/dashboard/new-section', 				function () use ($deshboard, $app){
 	$desc = $app->request->post('desc');
 	$type = $app->request->post('type');
 	$code = $app->request->post('code');
-	$deshboard->new_section("new", $type, $name, $desc, $code);
+	$submit = $app->request->post('submit');
+	$deshboard->new_section("new", $type, $name, $desc, $code, $submit);
 });
 
 $app->get('/dashboard/update-section-status/:id', 	function ($id) use ($deshboard){
@@ -70,7 +71,7 @@ $app->get('/dashboard/remove-section/:id', 			function ($id) use ($deshboard){
 });
 
 $app->get('/dashboard/update-section/:id', 			function ($id) use ($deshboard){
-	$deshboard->update_section($id, "show", "", "", "", "");
+	$deshboard->update_section($id, "show", "", "", "", "", "");
 });
 
 $app->get('/dashboard/sort-sections', 				function () use ($deshboard){
@@ -90,8 +91,12 @@ $app->post('/dashboard/update-section/:id', 		function ($id) use ($deshboard, $a
 	$desc = $app->request->post('desc');
 	$type = $app->request->post('type');
 	$code = $app->request->post('code');
+	$submit = $app->request->post('submit');
+	$deshboard->update_section($id, "update", $type, $name, $desc, $code, $submit);
+});
 
-	$deshboard->update_section($id, "update", $type, $name, $desc, $code);
+$app->get('/installer', 								function () use ($deshboard){
+	$deshboard->installer();
 });
 
 $app->get('/login', 								function () use ($login){

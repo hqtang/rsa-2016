@@ -72,11 +72,21 @@ if(isset($message) && $message != "")
 		  </div>
 		  <div class="form-group">
 		  	<label for="code">Code</label>
-		    <textarea class="form-control" name="code" id="code" rows="30"><?php echo isset($section['content']) ? $section['content']: ""; ?></textarea>
+		    <textarea class="form-control" name="code" id="code" rows="30"><?php echo isset($section['content']) ? htmlspecialchars($section['content']): ""; ?></textarea>
 		  </div>
 		  
 		  
-		  <button type="submit" class="btn btn-default">Submit</button>
+		  
+		  <input type="submit" name="submit" value="Save" class="btn btn-default" />
+		<?php
+		  	if($option != "new")
+		  	{
+  		?>
+  		<input type="submit" name="submit" value="Save and Close" class="btn btn-default" />
+  		<?php
+		  	}
+		?>
+		  
 		</form>
 	</div>
 </div>

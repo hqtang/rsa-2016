@@ -93,10 +93,11 @@ class Dashboard
 		}
 	}
 
-	public function new_section($option, $type, $name, $desc, $code)
+	public function new_section($option, $type, $name, $desc, $code, $submit)
 	{
 		$this->check_login();
 		$this->page_data['message'] = "";
+		$this->page_data['option'] = "new";
 		if($option == "new" && trim($name) == "")
 		{
 			$this->page_data['message'] = "Name should not empty!";
@@ -105,13 +106,14 @@ class Dashboard
 		{
 			$section_id = $this->model->add_section($type, $name, $desc, $code);
 			$this->session->set_flashdata("success_message", "Section has been created");
-			$this->app->redirect('/dashboard');		
+			$this->app->redirect('/dashboard');	
+			
 		}
 
 		$this->view("new-section.php");
 	}
 
-	public function update_section($id, $option, $type, $name, $desc, $code)
+	public function update_section($id, $option, $type, $name, $desc, $code, $submit)
 	{
 		$this->check_login();
 		$this->page_data['option'] = "update";
@@ -119,7 +121,7 @@ class Dashboard
 		if(trim($id) == "" || !is_numeric($id))
 		{
 			$this->session->set_flashdata("error_message", "Error Section ID");
-			$this->app->redirect('/dashboard');	
+			$this->app->redirect('/dashboard');
 		}
 		else
 		{
@@ -138,7 +140,11 @@ class Dashboard
 				);
 				$this->model->update_section($update_section);
 				$this->session->set_flashdata("success_message", "Section has been updated");
-				$this->app->redirect('/dashboard');
+				if($submit == "Save and Close")
+				{
+					$this->app->redirect('/dashboard');
+				}
+				
 			}
 
 			$search_options = array('section_id' => $id);
@@ -233,5 +239,23 @@ class Dashboard
 		{
 			$this->app->redirect("/login");		
 		}
+	}
+
+	public function installer()
+	{
+		//installer
+		if($this->app->config('installer') === true)
+		{
+			//SHOW TABLES LIKE tablename;
+			$data = $this->model->create_database();
+			
+			if($this->model->check_database() == true)
+			{
+				$this->app->redirect("/");
+			}
+		}
+
+		$this->app->redirect("/");
+
 	}
 }

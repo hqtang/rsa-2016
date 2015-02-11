@@ -2,41 +2,42 @@
 $config = array(
 	'config'	=>	array(
 						'mode'									=>	'production', //production/development
+						'installer'								=>	false,
 						'debug'									=>	false,
-						'log.enable' 						=>	true,
-						'log.level' 						=>	4,
-						'templates.path'				=>	dirname(__FILE__)."/views/default",
-						'templates.dashboard'		=>	dirname(__FILE__)."/views/dashboard",
-						'login.username'				=>	"user",
-						'login.password'				=>	"password",
-            'session'             	=> null
+						'log.enable' 							=>	true,
+						'log.level' 							=>	4,
+						'templates.path'						=>	dirname(__FILE__)."/views/default",
+						'templates.dashboard'					=>	dirname(__FILE__)."/views/dashboard",
+						'login.username'						=>	"user",
+						'login.password'						=>	"password",
+            			'session'             					=> null
 		),
 
 	'db'		=>	new medoo([
 						// required
-						'database_type' 				=> 'mysql',
-						'database_name' 				=> '_YOUR_DATABASE_NAME_',
+						'database_type' 						=> 'mysql',
+						'database_name' 						=> '_YOUR_DATABASE_NAME_',
 						'server' 								=> '_YOUR_DATABASE_SERVER_ADDRESS_',
-						'username' 							=> '_YOUR_DATABASE_USERNAME_',
-						'password' 							=> '_YOUR_DATABASE_PASSWORD_',
+						'username' 								=> '_YOUR_DATABASE_USERNAME_',
+						'password' 								=> '_YOUR_DATABASE_PASSWORD_',
 						'port' 									=> 3306,
-						'charset' 							=> 'utf8',
+						'charset' 								=> 'utf8',
 		]),
 
 	'email'	=>	array(
-            'enable'								=>  true
-            ,'username'							=>	"_YOUR_EMAIL_USERNAME_"
-            ,'password'   					=>  "_YOUR_EMAIL_PASSWORD_"
-            ,'host'									=>	"_YOUR_EMAIL_SERVER_ADDRESS_"
-            ,'port'									=>	587
-            ,'email_to'							=>	"_YOUR_EMAIL_ADDRESS_"
-            ,'email_to_name'				=> "_YOUR_NAME_"
-            ,'email_bcc'						=>	""
-            ,'subject'							=> "Web Message from "
+			            'enable'								=>  true
+			            ,'username'								=>	"_YOUR_EMAIL_USERNAME_"
+			            ,'password'   							=>  "_YOUR_EMAIL_PASSWORD_"
+			            ,'host'									=>	"_YOUR_EMAIL_SERVER_ADDRESS_"
+			            ,'port'									=>	587
+			            ,'email_to'								=>	"_YOUR_EMAIL_ADDRESS_"
+			            ,'email_to_name'						=> "_YOUR_NAME_"
+			            ,'email_bcc'							=>	""
+			            ,'subject'								=> "Web Message from "
 
             /* EMAIL TEMPLATE */
             
-            ,'body'									=>	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            			,'body'									=>	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="viewport" content="width=device-width" />
