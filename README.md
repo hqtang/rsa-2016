@@ -56,7 +56,11 @@ The CMS has plugin for sending email via Mandrill service. In order to use this 
 
 
 ##Get Start
-Simply access backend via http://youdomain.com/login with your username and password. 
+Before get start with impossible page, the database should be initialized. After finish configuration, access http://youdomain.com/installer, the script will setup database automatically.
+
+Now, Simply access backend via http://youdomain.com/login with your username and password.
+
+NOTE: If database has been successfully setup. the installer should be disabled. Please change `installer` item to `false` in config.php, in order to disable installer.
 
 ##Demo
 
